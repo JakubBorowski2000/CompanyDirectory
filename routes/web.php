@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\CustomAuthController;
 
 
@@ -12,6 +13,8 @@ Route::post('/login', [CustomAuthController::class, 'login']);
 
 Route::post('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', function () {
-    return 'Welcome to the Home Page!';
-})->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'show']);
+});
