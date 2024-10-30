@@ -16,5 +16,9 @@ Route::post('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'show']);
+    Route::get('/employees', [DashboardController::class, 'showEmployees']);
+
+    Route::get('/departments', [DashboardController::class, 'showDepartments']);
+
+    Route::get('/locations', [DashboardController::class, 'showLocations']);
 });

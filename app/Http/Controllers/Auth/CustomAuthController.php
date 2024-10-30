@@ -37,7 +37,7 @@ class CustomAuthController extends Controller
         Auth::login($user);
 
         // Redirect to the intended location or a specific route
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/employees');
     }
 
     // Show login form
@@ -56,7 +56,7 @@ class CustomAuthController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             // Redirect to the intended location or a specific route
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/employees');
         }
 
         // If login fails, throw an error
