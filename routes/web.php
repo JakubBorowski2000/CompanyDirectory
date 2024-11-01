@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Auth\CustomAuthController;
 
 
@@ -16,9 +18,9 @@ Route::post('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/employees', [DashboardController::class, 'showEmployees']);
+    Route::get('/employees', [EmployeeController::class, 'show']);
 
-    Route::get('/departments', [DashboardController::class, 'showDepartments']);
+    Route::get('/departments', [DepartmentController::class, 'show']);
 
-    Route::get('/locations', [DashboardController::class, 'showLocations']);
+    Route::get('/locations', [LocationController::class, 'show']);
 });

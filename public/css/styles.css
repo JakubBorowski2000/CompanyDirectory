@@ -5,3 +5,77 @@ body{
     background-size: cover;
     min-height: 100vh;
 }
+#addEditEmployeeModal .modal-content{
+    min-height: 256px;
+}
+#deleteEmployeeConfirmation .modal-content{
+    min-height: 256px;
+}
+
+.filterMax, .filterMax select {
+    width: 100%;
+}
+.inputMax, .inputMax input {
+    width: 100%;
+}
+
+.labelMinWidth{
+    min-width: 100px;
+}
+
+/*TABLES*/
+.tableRowEmp, .tableRowDep, .tableRowLoc{
+    height: calc(100vh - 126px);
+}
+.tableRowEmp thead, .tableRowDep thead, .tableRowLoc thead{
+    position: sticky; top: -1px; z-index: 1;
+}
+@media only screen and (max-width: 991px) {
+    .tableRowEmp {
+        height: calc(100vh - 180px);
+    }
+    .tableRowDep {
+        height: calc(100vh - 180px);
+    }
+    .tableRowLoc {
+        height: calc(100vh - 196px);
+    }
+}
+@media only screen and (max-width: 575px) {
+    .tableRowEmp {
+        height: calc(100vh - 288px);
+    }
+    .tableRowDep {
+        height: calc(100vh - 234px);
+    }
+}
+.container{
+    max-width: 100%;
+}
+
+/*Pagination*/
+.paginate_button a{
+    background-color: #212529 !important;
+    color: #FFF !important;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+    padding: 1rem;
+}
+.page-item.active .page-link{
+    border-color: #198754 !important;
+}
+.page-item .page-link:focus{
+    box-shadow: none !important;
+}
+#locationsTable_length, #employeeTable_length, #departmentTable_length{
+    color: #fff!important;
+}
+#locationsTable_length select, #departmentTable_length select, #employeeTable_length select{
+    background-color: #6c757d!important;
+    color: #fff!important;
+}
+
+
+.modal-backdrop {
+    background-color: transparent;
+ }
