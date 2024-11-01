@@ -15,13 +15,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a id="employees" class="nav-link" href="">Employees</a>
+              <a id="employees" class="nav-link" href="{{ route('employees') }}">Employees</a>
             </li>
             <li class="nav-item">
-              <a id="departments" class="nav-link" href="">Departments</a>
+              <a id="departments" class="nav-link" href="{{ route('departments') }}">Departments</a>
             </li>
             <li class="nav-item">
-              <a id="locations" class="nav-link" href="">Locations</a>
+              <a id="locations" class="nav-link" href="{{ route('locations') }}">Locations</a>
             </li>
           </ul>
         </div>

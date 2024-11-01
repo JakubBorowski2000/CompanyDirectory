@@ -8,10 +8,8 @@ class LocationController extends Controller
 {
     public function show()
     {
-        return view('locations');
+        $tableHeadNames = ["Location", "Action"];
 
-        // tableRowLoc
-        // <th scope="col">Location</th>
-        // <th scope="col">Action</th>
+        return view('locations', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowLoc"]);
     }
 }

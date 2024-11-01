@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 overflow-auto tableRowEmp">
+    <div class="col-12 overflow-auto @if(isset($tableClass)) {{$tableClass}} @endif">
         <table
         id="employeeTable"
         class="display nowrap table table-striped table-dark text-white"
@@ -7,12 +7,11 @@
         >
         <thead>
             <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Job Title</th>
-            <th scope="col">Email</th>
-            <th scope="col">Department</th>
-            <th scope="col">Location</th>
-            <th scope="col">Action</th>
+                @if(isset($tableHeadNames))
+                    @foreach($tableHeadNames as $name)
+                        <th scope="col">{{$name}}</th>
+                    @endforeach
+                @endif
             </tr>
         </thead>
         <tbody></tbody>

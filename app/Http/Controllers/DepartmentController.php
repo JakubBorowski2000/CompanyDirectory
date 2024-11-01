@@ -8,13 +8,8 @@ class DepartmentController extends Controller
 {
     public function show()
     {
-        return view('departments');
+        $tableHeadNames = ["Department", "Location", "Action"];
 
-
-        // tableRowDep
-        // <th scope="col">Department</th>
-        // <th scope="col">Location</th>
-        // <th scope="col">Action</th>
-
+        return view('departments', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowDep"]);
     }
 }

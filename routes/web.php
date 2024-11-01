@@ -18,9 +18,9 @@ Route::post('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/employees', [EmployeeController::class, 'show']);
+    Route::get('/employees', [EmployeeController::class, 'show'])->name("employees");
 
-    Route::get('/departments', [DepartmentController::class, 'show']);
+    Route::get('/departments', [DepartmentController::class, 'show'])->name("departments");
 
-    Route::get('/locations', [LocationController::class, 'show']);
+    Route::get('/locations', [LocationController::class, 'show'])->name("locations");
 });

@@ -8,16 +8,9 @@ class EmployeeController extends Controller
 {
     public function show()
     {
+        $tableHeadNames = ["Name", "Job Title", "Email", "Department", "Location", "Action"];
 
-        return view('employees');
-
-        // tableRowEmp
-        // <th scope="col">Name</th>
-        // <th scope="col">Job Title</th>
-        // <th scope="col">Email</th>
-        // <th scope="col">Department</th>
-        // <th scope="col">Location</th>
-        // <th scope="col">Action</th>
+        return view('employees', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowEmp"]);
     }
 
     public function getEmployees()
