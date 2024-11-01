@@ -18,6 +18,12 @@
 @yield('content')
 
 
+<script>
+    const getAllEmployeesUrl = "{{ route('getAllEmployees') }}";
+</script>
+
+<script src="{{asset('/jQuery/jquery.min.js')}}"></script>
+<script src="{{asset('/js/apiFunctions.js')}}"></script>
 <script src="{{asset('/bootstrap-5.2.3-dist/js/bootstrap.min.js')}}"></script>
 </body>
 </html>
