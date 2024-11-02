@@ -14,16 +14,3 @@ async function getAllEmployees(filter) {
       console.error(error);
     }
 }
-
-employeeFilter = {
-    location: "",
-    department: "",
-    search: ""
-  }
-
-async function get(employeeFilter){
-    result = await getAllEmployees(employeeFilter);
-    console.log(result);
-}
-
-get(employeeFilter);

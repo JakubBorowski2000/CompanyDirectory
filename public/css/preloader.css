@@ -6,7 +6,7 @@
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #fff;
+    background: #485461;
   }
   #preloader:before {
     content: "";
