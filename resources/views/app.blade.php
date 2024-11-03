@@ -21,6 +21,7 @@
 
 <script>
     const getAllEmployeesUrl = "{{ route('getAllEmployees') }}";
+    const getAllDepartmentsUrl = "{{ route('getAllDepartments') }}";
 </script>
 
 <script src="{{asset('/jQuery/jquery.min.js')}}"></script>

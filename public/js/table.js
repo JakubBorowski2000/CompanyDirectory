@@ -1,7 +1,48 @@
 filter = {
     location: "",
-    department: "Legal",
+    department: "",
     search: ""
+}
+
+// if($('#locationFilter').length){
+//     $('#locationFilter').empty();
+//     let locationsOptions = "<option value='all'>All</option>";
+//     for (const [key, value] of Object.entries(locations.data)) {
+//       let selected = "";
+//       if(employeeFilter.location  == value.name){
+//         selected = "selected";
+//       }
+//       locationsOptions += `<option value='${value.name}' ${selected}>${value.name}</option>`;
+//     }
+//     $('#locationFilter').append(locationsOptions);
+// }
+window.onload = function() {
+if($('#departmentFilter').length){
+    populateDepartmentFilter(filter);
+    $( "#departmentFilter" ).change(function() {
+        if( $( this ).val() == "all" ){
+            filter.department = "";
+        }else{
+            filter.department = $( this ).val();
+        }
+        displayData(filter);
+    });
+}
+};
+
+
+async function populateDepartmentFilter(filter = {}){
+    departments = await getAllDepartments();
+    $('#departmentFilter').empty();
+    let departmentsOptions = "<option value='all'>All</option>";
+    for (const [key, value] of Object.entries(departments.data)) {
+        let selected = "";
+        if(filter.department  == value.department_name){
+        selected = "selected";
+        }
+        departmentsOptions += `<option value='${value.department_name}' ${selected}>${value.department_name}</option>`;
+    }
+    $('#departmentFilter').append(departmentsOptions);
 }
 
 async function displayData(filter){
