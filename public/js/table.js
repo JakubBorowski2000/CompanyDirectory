@@ -4,30 +4,50 @@ filter = {
     search: ""
 }
 
-// if($('#locationFilter').length){
-//     $('#locationFilter').empty();
-//     let locationsOptions = "<option value='all'>All</option>";
-//     for (const [key, value] of Object.entries(locations.data)) {
-//       let selected = "";
-//       if(employeeFilter.location  == value.name){
-//         selected = "selected";
-//       }
-//       locationsOptions += `<option value='${value.name}' ${selected}>${value.name}</option>`;
-//     }
-//     $('#locationFilter').append(locationsOptions);
-// }
+
 window.onload = function() {
-if($('#departmentFilter').length){
-    populateDepartmentFilter(filter);
-    $( "#departmentFilter" ).change(function() {
-        if( $( this ).val() == "all" ){
-            filter.department = "";
-        }else{
-            filter.department = $( this ).val();
+    if($('#departmentFilter').length){
+        populateDepartmentFilter(filter);
+        $( "#departmentFilter" ).change(function() {
+            if( $( this ).val() == "all" ){
+                filter.department = "";
+            }else{
+                filter.department = $( this ).val();
+            }
+            displayData(filter);
+        });
+    }
+    if($('#locationFilter').length){
+        populateLocationsFilter(filter);
+        $( "#locationFilter" ).change(function() {
+            if( $( this ).val() == "all" ){
+                filter.location = "";
+            }else{
+                filter.location = $( this ).val();
+            }
+            displayData(filter);
+        });
+    }
+
+    /////// SEARCH ///////
+    $( "#input" ).on("input", function() {
+        if( $( this ).val() == "" ){
+            filter.search = "";
+            displayData(filter);
         }
-        displayData(filter);
     });
-}
+    //When enter is pressed search
+    $('#input').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+          employeeSearch();
+        }
+    });
+    $('#search').on("click", employeeSearch);
+    var employeeSearch = function() {
+        filter.search = $('#input').val();
+        displayData(filter);
+    }
 };
 
 
@@ -43,6 +63,20 @@ async function populateDepartmentFilter(filter = {}){
         departmentsOptions += `<option value='${value.department_name}' ${selected}>${value.department_name}</option>`;
     }
     $('#departmentFilter').append(departmentsOptions);
+}
+
+async function populateLocationsFilter(filter = {}){
+    locations = await getAllLocations();
+    $('#locationFilter').empty();
+    let locationsOptions = "<option value='all'>All</option>";
+    for (const [key, value] of Object.entries(locations.data)) {
+        let selected = "";
+        if(filter.location  == value.location_name){
+        selected = "selected";
+        }
+        locationsOptions += `<option value='${value.location_name}' ${selected}>${value.location_name}</option>`;
+    }
+    $('#locationFilter').append(locationsOptions);
 }
 
 async function displayData(filter){

@@ -31,3 +31,20 @@ async function getAllDepartments(filter = {}) {
       console.error(error);
     }
 }
+
+async function getAllLocations(filter = {}) {
+    let result;
+    try {
+      result = await $.ajax({
+        url: getAllLocationsUrl,
+        type: "POST",
+        dataType: "json",
+        data: {
+            ...filter
+        },
+      });
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+}
