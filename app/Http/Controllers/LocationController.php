@@ -10,7 +10,7 @@ class LocationController extends Controller
     {
         $tableHeadNames = ["Location", "Action"];
 
-        return view('locations', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowLoc"]);
+        return view('locations', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowLoc", "page" => "locations"]);
     }
     public function getLocations(Request $request)
     {

@@ -11,7 +11,7 @@ class DepartmentController extends Controller
     {
         $tableHeadNames = ["Department", "Location", "Action"];
 
-        return view('departments', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowDep"]);
+        return view('departments', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowDep", "page" => "departments"]);
     }
     public function getDepartments(Request $request)
     {

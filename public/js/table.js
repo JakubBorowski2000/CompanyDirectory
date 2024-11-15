@@ -40,11 +40,11 @@ window.onload = function() {
     $('#input').keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-          employeeSearch();
+          search();
         }
     });
-    $('#search').on("click", employeeSearch);
-    var employeeSearch = function() {
+    $('#search').on("click", search);
+    var search = function() {
         filter.search = $('#input').val();
         displayData(filter);
     }
@@ -80,7 +80,18 @@ async function populateLocationsFilter(filter = {}){
 }
 
 async function displayData(filter){
-    result = await getAllEmployees(filter);
+    switch (page) {
+        case "locations":
+            result = await getAllLocations(filter);
+            break;
+        case "departments":
+            result = await getAllDepartments(filter);
+            break;
+        case "employees":
+        default:
+            result = await getAllEmployees(filter);
+            break;
+    }
     console.log(result.data);
 
 
@@ -89,14 +100,32 @@ async function displayData(filter){
     if(result){
         if(result.status == "200"){
             for (const [key, value] of Object.entries(result.data)) {
-                table.row.add( [
-                    `${value.lastName}, ${value.firstName}`,
-                    value.jobTitle,
-                    value.email,
-                    value.department_name,
-                    value.location_name,
-                    `<div class="d-flex justify-content-end"><button type="button" value="${value.id}" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditEmployeeModal">Edit</button><button value="${value.firstName}-${value.lastName}-${value.id}" class="ms-2 deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeConfirmation">Delete</button></div>`
-                ] ).draw( false );
+                switch (page) {
+                    case "locations":
+                        table.row.add( [
+                            value.location_name,
+                            `<div class="d-flex justify-content-end"><button type="button" value="${value.id}" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditEmployeeModal">Edit</button><button value="${value.firstName}-${value.lastName}-${value.id}" class="ms-2 deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeConfirmation">Delete</button></div>`
+                        ] ).draw( false );
+                        break;
+                    case "departments":
+                        table.row.add( [
+                            value.department_name,
+                            value.location_name,
+                            `<div class="d-flex justify-content-end"><button type="button" value="${value.id}" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditEmployeeModal">Edit</button><button value="${value.firstName}-${value.lastName}-${value.id}" class="ms-2 deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeConfirmation">Delete</button></div>`
+                        ] ).draw( false );
+                        break;
+                    case "employees":
+                    default:
+                        table.row.add( [
+                            `${value.lastName}, ${value.firstName}`,
+                            value.jobTitle,
+                            value.email,
+                            value.department_name,
+                            value.location_name,
+                            `<div class="d-flex justify-content-end"><button type="button" value="${value.id}" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditEmployeeModal">Edit</button><button value="${value.firstName}-${value.lastName}-${value.id}" class="ms-2 deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeConfirmation">Delete</button></div>`
+                        ] ).draw( false );
+                        break;
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ class EmployeeController extends Controller
     {
         $tableHeadNames = ["Name", "Job Title", "Email", "Department", "Location", "Action"];
 
-        return view('employees', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowEmp"]);
+        return view('employees', ["tableHeadNames" => $tableHeadNames, "tableClass" => "tableRowEmp", "page" => "employees"]);
     }
 
     public function getEmployees(Request $request)
