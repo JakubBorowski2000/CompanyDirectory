@@ -45,5 +45,6 @@
 <script type="text/javascript" src="{{asset('/js/preloader.js')}}"></script>
 <script src="{{asset('/js/apiFunctions.js')}}"></script>
 <script src="{{asset('/js/table.js')}}"></script>
+<script src="{{asset('/js/modal.js')}}"></script>
 </body>
 </html>

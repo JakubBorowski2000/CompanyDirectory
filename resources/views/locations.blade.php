@@ -26,4 +26,8 @@
   @include('includes/table')
 </div>
 
+@include('includes/modals/addEdit')
+
+@include('includes/modals/delete')
+
 @endsection
