@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/getAllEmployees', [EmployeeController::class, 'getEmployees'])->name("getAllEmployees");
-Route::post('/getAllDepartments', [DepartmentController::class, 'getDepartments'])->name("getAllDepartments");
-Route::post('/getAllLocations', [LocationController::class, 'getLocations'])->name("getAllLocations");
+Route::get('/getAllEmployees', [EmployeeController::class, 'getEmployees'])->name("getAllEmployees");
+Route::get('/getAllDepartments', [DepartmentController::class, 'getDepartments'])->name("getAllDepartments");
+Route::get('/getAllLocations', [LocationController::class, 'getLocations'])->name("getAllLocations");
+Route::post('/storeEmployees', [EmployeeController::class, 'store'])->name("storeEmployees");

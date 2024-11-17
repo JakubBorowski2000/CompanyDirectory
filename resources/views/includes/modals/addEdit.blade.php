@@ -1,13 +1,13 @@
 <div
       class="modal fade"
-      id="addEditEmployeeModal"
+      id="addEditModal"
       tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark bg-gradient text-white">
-          <form id="employeeForm" method="POST">
+          <form id="addEditForm" method="POST">
             <div class="modal-header">
-              <h5 class="modal-title" id="addEditEmployeeModalTitle"></h5>
+              <h5 class="modal-title" id="addEditModalTitle"></h5>
               <button
                 type="button"
                 class="btn-close btn-close-white"

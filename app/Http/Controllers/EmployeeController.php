@@ -55,4 +55,39 @@ class EmployeeController extends Controller
 
         return json_encode(["status" => 200, "data" => $employees]);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'firstName' => 'required|string|max:50',
+            'lastName' => 'required|string|max:50',
+            'jobTitle' => 'required|string|max:50',
+            'email' => 'required|email',
+            'departmentID' => 'required|exists:department,id',
+        ]);
+        
+        try {
+            // Attempt to create the employee
+            $employee = Employee::create([
+                'firstName' => $validatedData['firstName'],
+                'lastName' => $validatedData['lastName'],
+                'jobTitle' => $validatedData['jobTitle'],
+                'email' => $validatedData['email'],
+                'departmentID' => $validatedData['departmentID'],
+            ]);
+    
+            // Return success response
+            return response()->json(['message' => 'Employee created successfully.'], 201);
+        } catch (\Exception $e) {
+            // Log the error if needed
+            \Log::error('Employee creation failed: ' . $e->getMessage());
+    
+            // Return error response with status code
+            return response()->json([
+                'error' => 'Failed to create employee.',
+                'details' => $e->getMessage(), // Optionally include error details
+            ], 500); // HTTP status 500: Internal Server Error
+        }
+
+    }
 }

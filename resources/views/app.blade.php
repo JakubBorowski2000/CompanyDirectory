@@ -23,6 +23,7 @@
     const getAllEmployeesUrl = "{{ route('getAllEmployees') }}";
     const getAllDepartmentsUrl = "{{ route('getAllDepartments') }}";
     const getAllLocationsUrl = "{{ route('getAllLocations') }}";
+    const storeEmployees = "{{ route('storeEmployees') }}";
     @if(isset($page)) const page = "{{$page}}";@endif
 </script>
 

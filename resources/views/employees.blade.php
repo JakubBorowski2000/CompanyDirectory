@@ -22,7 +22,15 @@
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-6 d-flex align-items-center justify-content-end">
-        @include('includes/addNew')
+    <button
+        id="addNew"
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#addEditModal"
+        >
+        Add new
+    </button>
     </div>
 
     </div>

@@ -3,7 +3,7 @@ async function getAllEmployees(filter = {}) {
     try {
       result = await $.ajax({
         url: getAllEmployeesUrl,
-        type: "POST",
+        type: "GET",
         dataType: "json",
         data: {
             ...filter
@@ -20,7 +20,7 @@ async function getAllDepartments(filter = {}) {
     try {
       result = await $.ajax({
         url: getAllDepartmentsUrl,
-        type: "POST",
+        type: "GET",
         dataType: "json",
         data: {
             ...filter
@@ -37,7 +37,7 @@ async function getAllLocations(filter = {}) {
     try {
       result = await $.ajax({
         url: getAllLocationsUrl,
-        type: "POST",
+        type: "GET",
         dataType: "json",
         data: {
             ...filter
@@ -47,4 +47,22 @@ async function getAllLocations(filter = {}) {
     } catch (error) {
       console.error(error);
     }
+}
+
+
+async function storeEmployee(filter = {}) {
+  let result;
+  try {
+    result = await $.ajax({
+      url: storeEmployees,
+      type: "POST",
+      dataType: "json",
+      data: {
+          ...filter
+      },
+    });
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 }

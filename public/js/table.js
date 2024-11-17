@@ -51,9 +51,13 @@ window.onload = function() {
 };
 
 
-async function populateDepartmentFilter(filter = {}){
+async function populateDepartmentFilter(filter = {}, modalFilter = false){
     departments = await getAllDepartments();
-    $('#departmentFilter').empty();
+    if(!modalFilter){
+        $('#departmentFilter').empty();
+    }else{
+        $('#departmentModalFilter').empty();
+    }
     let departmentsOptions = "<option value='all'>All</option>";
     for (const [key, value] of Object.entries(departments.data)) {
         let selected = "";
@@ -62,7 +66,11 @@ async function populateDepartmentFilter(filter = {}){
         }
         departmentsOptions += `<option value='${value.department_name}' ${selected}>${value.department_name}</option>`;
     }
-    $('#departmentFilter').append(departmentsOptions);
+    if(!modalFilter){
+        $('#departmentFilter').append(departmentsOptions);
+    }else{
+        $('#departmentModalFilter').append(departmentsOptions);
+    }
 }
 
 async function populateLocationsFilter(filter = {}){

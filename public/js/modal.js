@@ -1,6 +1,6 @@
-function createForm(){
-    $("#addEditEmployeeModal .modal-body").empty();
-    $("#addEditEmployeeModal .modal-body").append(`
+function createEmployeeForm(){
+    $("#addEditModal .modal-body").empty();
+    $("#addEditModal .modal-body").append(`
         <div id="firstName-group" class="form-group my-2">
           <label for="firstName">First Name</label>
           <input class="form-control bg-secondary text-white" id="firstName"/>
@@ -21,7 +21,29 @@ function createForm(){
           <label for="departmentModalFilter">Department</label>
           <select id="departmentModalFilter" class="form-select bg-secondary text-white"></select>
         </div>`);
-      $("#addEditEmployeeModal .modal-footer").show();
+      $("#addEditModal .modal-footer").show();
 }
 
-createForm();
+switch (page) {
+  case "locations":
+
+      break;
+  case "departments":
+
+      break;
+  case "employees":
+  default:
+    console.log("HELLO");
+     createEmployeeForm();
+      $('#addNew').on("click", function() {
+        $("#personnelID").remove();
+        $('#addEditEmployeeModalTitle').text("Add new Employee");
+        $('#firstName').val("");
+        $('#lastName').val("");
+        $('#jobTitle').val("");
+        $('#email').val("");
+        $('#departmentModalFilter').empty();
+        populateDepartmentFilter({location: ""}, true);
+      });
+      break;
+}

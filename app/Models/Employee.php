@@ -16,4 +16,7 @@ class Employee extends Model
      * @var string
      */
     protected $table = 'personnel';
+    public $timestamps = false; // Disables automatic timestamps
+
+    protected $fillable = ['firstName', 'lastName', 'jobTitle', 'email', 'departmentID'];
 }
